@@ -1,0 +1,109 @@
+:host {
+  width: 100%;
+}
+.example-accordion {
+  display: block;
+  width: 100%;
+}
+
+.example-accordion-item {
+  display: block;
+  border: solid 1px #ccc;
+}
+
+.example-accordion-item + .example-accordion-item {
+  border-top: none;
+}
+
+.example-accordion-item-header {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.example-accordion-item-description {
+  font-size: 0.85em;
+  color: #999;
+}
+
+.example-accordion-item-header,
+.example-accordion-item-body {
+  padding: 16px;
+}
+
+.example-accordion-item-header:hover {
+  cursor: pointer;
+  background-color: #eee;
+}
+
+.example-accordion-item:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.example-accordion-item:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.task-table {
+  width: 100%;
+}
+
+.mat-table {
+  overflow-x: scroll;
+}
+
+.mat-header-cell {
+  word-wrap: initial;
+  line-break: unset;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.mat-row,
+.mat-header-row {
+  min-width: 30rem;
+}
+
+mat-row.example-detail-row {
+  flex-basis: 0; /* yes */
+  min-height: initial; /* override mat-row styling */
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+.example-element-description {
+  height: 5rem;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.mat-column-select {
+  flex: 0 0 10%;
+}
+
+.mat-column-name {
+  flex: 0 0 45%;
+}

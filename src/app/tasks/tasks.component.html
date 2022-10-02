@@ -1,0 +1,89 @@
+<div style="width: 100%;">
+
+    <mat-toolbar color="primary">
+        <div class="example-button-container">
+            <button (click)="openTaskDialog()" mat-mini-fab color="accent" aria-label="">
+                <mat-icon>plus_one</mat-icon>
+            </button>
+        </div>
+
+    </mat-toolbar>
+    <cdk-accordion color="primary" multi="true" class="example-accordion">
+        <cdk-accordion-item #accordionTodo="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
+            [attr.id]="'accordion-header-todo'" [attr.aria-expanded]="accordionTodo.expanded"
+            [attr.aria-controls]="'accordion-body-todo'">
+            <div class="example-accordion-item-header" (click)="accordionTodo.toggle()">
+                <h3>Todo</h3>
+                <span class="example-accordion-item-description">
+                    Click to {{ accordionTodo.expanded ? 'close' : 'open' }}
+                </span>
+            </div>
+            <mat-table multiTemplateDataRows (matSortChange)="sortData($event)" matSort
+                [style.display]="accordionTodo.expanded ? '' : 'none'" mat-table [dataSource]="sortedTodos"
+                class="mat-elevation-z8 task-table">
+                <!-- Checkbox Column -->
+                <ng-container matColumnDef="select">
+                    <mat-header-cell *matHeaderCellDef>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <mat-checkbox color="primary" (click)="setTaskDone($event,row)">
+                        </mat-checkbox>
+                    </mat-cell>
+                </ng-container>
+                <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+                <ng-container matColumnDef="expandedDetail">
+                    <mat-header-cell *matCellDef="let row" [attr.colspan]="columnsToDisplay.length">
+                        <div class="example-element-detail"
+                            [@detailExpand]="row == expandedElement ? 'expanded' : 'collapsed'">
+                            <div class="example-element-description row">
+                                <div class="col">
+                                    {{'Time it takes: ' }} {{row.time | timeDisplay}}
+
+                                </div>
+                                <div class="col">
+                                    {{'Every '+ row.often + 'days'}}
+
+                                </div>
+                            </div>
+                        </div>
+                    </mat-header-cell>
+                </ng-container>
+                <ng-container [matColumnDef]="column.value" *ngFor="let column of displayedColumns">
+                    <mat-header-cell mat-sort-header *matHeaderCellDef> {{column.value !== 'time' ? column.name
+                        : ''}}
+                        <mat-icon *ngIf="column.value === 'time'">timer</mat-icon>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{[element,column] | taskDisplay}} </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: columnsToDisplay;"
+                    (click)="expandedElement = expandedElement === row ? null : row"
+                    [class.example-expanded-row]="expandedElement === row"></mat-row>
+                <mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></mat-row>
+            </mat-table>
+        </cdk-accordion-item>
+
+
+        <cdk-accordion-item #accordionUpcoming="cdkAccordionItem" class="example-accordion-item" role="button"
+            tabindex="0" [attr.id]="'accordion-header-upcoming'" [attr.aria-expanded]="accordionUpcoming.expanded"
+            [attr.aria-controls]="'accordion-body-upcoming'">
+            <div class="example-accordion-item-header" (click)="accordionUpcoming.toggle()">
+                <h3>Upcoming</h3>
+                <span class="example-accordion-item-description">
+                    Click to {{ accordionUpcoming.expanded ? 'close' : 'open' }}
+                </span>
+            </div>
+            <mat-table matSort [style.display]="accordionUpcoming.expanded ? '' : 'none'" [dataSource]="upcomingTodos"
+                class="mat-elevation-z8 task-table">
+                <ng-container [matColumnDef]="column.value" *ngFor="let column of displayedColumns">
+                    <mat-header-cell mat-sort-header *matHeaderCellDef> {{column.name}} </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{[element,column] | taskDisplay}} </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="upcomingColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: upcomingColumns;"></mat-row>
+            </mat-table>
+        </cdk-accordion-item>
+    </cdk-accordion>
+</div>

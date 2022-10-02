@@ -1,0 +1,23 @@
+.app-toolbar {
+  position: fixed;
+  bottom: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+  font-size: 3vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.app-footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
+  top: unset;
+  right: unset;
+}
+
+.menu-item {
+  overflow: visible;
+}

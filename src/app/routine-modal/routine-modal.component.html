@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Add new Routine</h2>
+<mat-dialog-content [formGroup]="formGroup" class="mat-typography">
+    <mat-form-field appearance="standard">
+        <mat-label>Routine name</mat-label>
+        <input formControlName="name" matInput placeholder="Enter Routine name">
+    </mat-form-field>
+    <div>
+        <mat-label class="toggle-left-label mat-slide-toggle-content">Day</mat-label>
+        <mat-slide-toggle color="primary" formControlName="time" placeholder="Enter time in hours">
+            Night
+        </mat-slide-toggle>
+
+    </div>
+    <!-- <mat-form-field appearance="standard">
+        <mat-label>Interval ( in days)</mat-label>
+        <input type="number" formControlName="interval" matInput placeholder="Enter number of days">
+    </mat-form-field> -->
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button [disabled]="!formGroup.valid" (click)="create()" mat-button [mat-dialog-close]="formGroup"
+        cdkFocusInitial>Create</button>
+</mat-dialog-actions>
