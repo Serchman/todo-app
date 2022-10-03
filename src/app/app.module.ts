@@ -36,17 +36,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RoutineModalComponent } from './routine-modal/routine-modal.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
-export const firebaseConfig = {
-  apiKey: 'AIzaSyBH-FmWYidPPISHzo4uwIpjExU_wC38dIw',
-  authDomain: 'maks-egi.firebaseapp.com',
-  databaseURL:
-    'https://maks-egi-default-rtdb.europe-west1.firebasedatabase.app',
-  projectId: 'maks-egi',
-  storageBucket: 'maks-egi.appspot.com',
-  messagingSenderId: '429288672997',
-  appId: '1:429288672997:web:8fea753b4edf4e30120e0c',
-};
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +61,7 @@ export const firebaseConfig = {
     CdkAccordionModule,
     MatCardModule,
     MatTableModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     CountdownModule,
     MatCheckboxModule,

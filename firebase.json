@@ -4,6 +4,10 @@
   },
   "hosting": {
     "public": "dist/chores-app",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
   }
 }
