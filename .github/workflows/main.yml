@@ -19,4 +19,7 @@ jobs:
 
       # Builds and deploys to firebase configured env
       - name: Build and deploy to firebase
-        run: npm run deploy
+        run: |
+          npm ci
+          npm run deploy
+        
