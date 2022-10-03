@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -8,10 +8,10 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-task.component.scss'],
 })
 export class AddTaskComponent implements OnInit {
-  formGroup = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    time: new FormControl('', [Validators.required]),
-    interval: new FormControl('', [Validators.required]),
+  formGroup = new UntypedFormGroup({
+    name: new UntypedFormControl('', [Validators.required]),
+    time: new UntypedFormControl('', [Validators.required]),
+    interval: new UntypedFormControl('', [Validators.required]),
   });
 
   constructor(protected dialogRef: MatDialogRef<AddTaskComponent>) {}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -8,13 +8,13 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./routine-modal.component.scss'],
 })
 export class RoutineModalComponent implements OnInit {
-  formGroup = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    time: new FormControl('', [Validators.required]),
-    steps: new FormGroup({
-      name: new FormControl(),
-      product: new FormControl(),
-      next: new FormControl(),
+  formGroup = new UntypedFormGroup({
+    name: new UntypedFormControl('', [Validators.required]),
+    time: new UntypedFormControl('', [Validators.required]),
+    steps: new UntypedFormGroup({
+      name: new UntypedFormControl(),
+      product: new UntypedFormControl(),
+      next: new UntypedFormControl(),
     }),
   });
 
